@@ -1,0 +1,15 @@
+@import "../global.scss";
+
+.header {
+  grid-area: header;
+  background-color: #f1f1f1;
+  
+  &__logo {
+    height: 60px;
+
+    img {
+      display: block;
+      height: 100%;
+    }
+  }
+}

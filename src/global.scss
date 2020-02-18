@@ -1,0 +1,83 @@
+/* ---------- Reset style, START ---------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  padding: 0;
+  border: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+/* ---------- Reset style, End ---------- */
+
+
+
+
+
+/* ---------- Main style, START ---------- */
+
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- Main style, END ---------- */
+
+
+
+
+
+/* ---------- Colors, START ---------- */
+
+$color-white: #fff;
+$color-black: #000;
+$color-ivory-white: #dbe1e7;
+$color-light-silver: #cacaca;
+$color-light-gray: #f3f3f3;
+$color-green: #36bc77;
+$dark-color: #191919;
+$color-background: #edf1f5;
+$color-error: #970B0E;
+$color-title: #466684;
+$color-subtitle: #6b6b6b;
+
+$checkbox-text: #404f5d;
+
+$pagination-disabled: #d8d8d8;
+$pagination-hover: #ecfff5;
+
+$select-arrow: #555555;
+$modal-close-color: #606770;
+
+$no-active-collapse: #c8c8c8;
+
+$blue-button: #41b5dd;
+$blue-button-hover: #4193e8;
+$button-border-color: #dadada;
+
+$input-border: #c4cdd5;
+$input-color: #404f5d;
+$input-label-color: #1f2d3d;

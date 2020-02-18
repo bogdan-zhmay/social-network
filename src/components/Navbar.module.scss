@@ -1,0 +1,53 @@
+@import "../global.scss";
+
+.nav {
+  grid-area: nav;
+  background-color: #f1f1f1;
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    
+    a {
+      display: block;
+      padding: 10px 15px;
+      color: $color-black;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+      transition: all .3s ease-in-out;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: $color-green;
+        transition: all .3s ease-in-out;
+      }
+
+      &:hover {
+        background-color: rgba($color-green, .2);
+
+        &:before {
+          width: 100%;
+        }
+      }
+    }
+
+    &.active {
+      
+      a {
+        background: $color-green;
+        line-height: 1;
+        color: #fff;        
+      }
+    }
+  }
+}
