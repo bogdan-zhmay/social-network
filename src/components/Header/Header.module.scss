@@ -1,11 +1,13 @@
-@import "../global.scss";
+@import "../../global.scss";
 
 .header {
   grid-area: header;
   background-color: #f1f1f1;
+  margin-bottom: 15px;
+  padding: 10px 0;
   
   &__logo {
-    height: 60px;
+    height: 50px;
 
     img {
       display: block;

@@ -1,7 +1,7 @@
 .app-wrapper-inner {
   display: grid;
-  grid-template-areas: "header header" "nav cont";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 240px calc(100% - 240px);
-  grid-gap: 10px;
+  grid-template-areas: "nav cont";
+  grid-template-rows: 1fr;
+  grid-template-columns: 240px calc(100% - 255px);
+  grid-gap: 15px;
 }

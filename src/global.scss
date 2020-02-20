@@ -40,6 +40,7 @@ ul {
 
 .container {
   max-width: 1440px;
+  padding: 0 15px;
   width: 100%;
   margin: 0 auto;
 }
@@ -81,3 +82,11 @@ $button-border-color: #dadada;
 $input-border: #c4cdd5;
 $input-color: #404f5d;
 $input-label-color: #1f2d3d;
+
+textarea {
+  background-color: #f4f4f4;
+  border: none;
+  resize: none;
+  padding: 15px 10px;
+  width: 100%;
+}
