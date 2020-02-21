@@ -39,6 +39,16 @@
           width: 100%;
         }
       }
+
+      &.active {
+        background: $color-green;
+        line-height: 1;
+        color: #fff;
+      }
+    }
+    
+    .link {
+      color: #000;
     }
 
     &.active {
