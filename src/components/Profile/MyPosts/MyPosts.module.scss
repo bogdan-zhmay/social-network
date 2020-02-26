@@ -8,4 +8,18 @@
     font-size: 30px;
     padding-bottom: 20px;
   }
+
+  &__form {
+    padding-bottom: 30px;
+
+    textarea {
+      margin-bottom: 15px;
+      height: 140px;
+    }
+  }
+
+  &__btn {
+    width: 120px;
+    margin-left: auto;
+  }
 }
