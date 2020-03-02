@@ -5,44 +5,26 @@ import MessageItem from "./MessageItem/MessageItem";
 
 const Dialogs = (props) => {
 
-  let dialogsData = [
-    {id: 1, name: 'Dmitry'},
-    {id: 2, name: 'Sergey'},
-    {id: 3, name: 'Sergey K.'},
-    {id: 4, name: 'Lucy'},
-    {id: 5, name: 'Maria'},
-    {id: 6, name: 'Viktor'},
-    {id: 7, name: 'Lera'},
-  ];
-
-  let messageData = [
-    {
-      id: 1,
-      name: 'Me',
-      src: 'https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      message: 'Hi man! How are you?'
-    },
-    {
-      id: 2,
-      name: 'Sergey K.',
-      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ88r6xoZrzc089TrdvE1tOfM7sCbdCdMRpl_eZT5BlgHOE9T2-',
-      message: 'Hi, everything grate!'
-    },
-    {
-      id: 3,
-      name: 'Me',
-      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ88r6xoZrzc089TrdvE1tOfM7sCbdCdMRpl_eZT5BlgHOE9T2-',
-      message: 'You are already tested this project?'
-    },
-  ];
-
-  let dialogItems = dialogsData
+  let dialogItems = props.data.dataDialogs
     .map( (item, index) => <DialogItem key={index} name={item.name} id={item.id}/> );
-  let messageItems = messageData
+
+  let messageItems = props.data.dataMessages
     .map( (item, index) => {
         return <MessageItem key={index} name={item.name} id={item.id} src={item.src} message={item.message}/>
       }
     );
+
+  let newMessage = React.createRef();
+
+  let addMessage = () => {
+    props.dispatch({ type: 'ADD-MESSAGE'});
+    newMessage.current.value = '';
+  };
+
+  let onMessageChange = () => {
+    let newDialogMessage = newMessage.current.value;
+    props.dispatch({ type: 'UPDATE-NEW-MESSAGE', newText: newDialogMessage });
+  };
 
   return (
     <div className={style.dialogs}>
@@ -53,6 +35,10 @@ const Dialogs = (props) => {
         </div>
         <div className={style.dialogs__content}>
           {messageItems}
+          <form className={style.dialogs__form}>
+            <textarea onChange={onMessageChange} ref={ newMessage } className={style.dialogs__textarea} placeholder='Write your message'></textarea>
+            <button type='button' onClick={ addMessage } className={ `${style.btn} ${style.dialogs__btn}` }>Send</button>
+          </form>
         </div>
       </div>
     </div>

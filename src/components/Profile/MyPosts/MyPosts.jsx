@@ -4,22 +4,29 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-  let postsData = [
-    {id: 1, message: 'Hi, how are you?', likes: "1"},
-    {id: 2, message: 'It\'s my first post', likes: "25"},
-  ];
 
-  let postItems = postsData
+  let postItems = props.dataPosts
     .map( (item, index) => <Post key={index} id={item.id} message={item.message} likes={item.likes}/>
   );
+
+  let newPostMessage = React.createRef();
+
+  let addPost = () => {
+    props.dispatch({ type: 'ADD-POST'});
+  };
+
+  let onPostChange = () => {
+    let newMessage = newPostMessage.current.value;
+    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: newMessage});
+  };
 
   return (
     <div className={style.postsContent}>
       <h1>My post</h1>
-      <form className={style.postsContent__form}>
-        <textarea className={style.postsContent__message} placeholder="your news..."></textarea>
-        <button className={`${style.btn} ${style.postsContent__btn}`}>Send</button>
-      </form>
+      <div className={style.postsContent__form}>
+        <textarea onChange={onPostChange} value={props.newPostText} ref={newPostMessage} className={style.postsContent__message} placeholder="your news..."/>
+        <button onClick={ addPost } className={`${style.btn} ${style.postsContent__btn}`}>Send</button>
+      </div>
       <div className={style.posts}>
         {postItems}
       </div>

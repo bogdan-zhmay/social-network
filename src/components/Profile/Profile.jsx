@@ -4,10 +4,15 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
+
   return (
     <div className={style.profile}>
       <ProfileInfo />
-      <MyPosts />
+      <MyPosts
+        dataPosts={props.data.dataPosts}
+        dispatch={props.dispatch}
+        newPostText={props.data.newPostText}
+      />
     </div>
   );
 };

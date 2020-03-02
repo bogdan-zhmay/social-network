@@ -101,4 +101,14 @@
       max-width: max-content;
     }
   }
+
+  &__textarea {
+    height: 120px;
+    margin-bottom: 15px;
+  }
+  
+  &__btn {
+    width: 120px;
+    margin-left: auto;
+  }
 }
