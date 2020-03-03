@@ -1,3 +1,7 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import navbarReducer from "./navbar-reducer";
+
 let store = {
   _state: {
     profilePage: {
@@ -5,7 +9,7 @@ let store = {
         {id: 1, message: 'Hi, how are you?', likes: "1"},
         {id: 2, message: 'It\'s my first post', likes: "25"},
       ],
-      newPostText: 'Riseapps'
+      newPostText: ''
     },
     dialogsPage: {
       dataMessages: [
@@ -28,6 +32,7 @@ let store = {
           message: 'You are already tested this project?'
         },
       ],
+      newMessageText: '',
       dataDialogs: [
         {id: 1, name: 'Dmitry'},
         {id: 2, name: 'Sergey'},
@@ -36,7 +41,7 @@ let store = {
         {id: 5, name: 'Maria'},
         {id: 6, name: 'Viktor'},
         {id: 7, name: 'Lera'},
-      ]
+      ],
     },
     navbar: {
       friends: [
@@ -62,7 +67,6 @@ let store = {
     console.log('State changed')
   },
 
-
   getState() {
     return this._state;
   },
@@ -70,78 +74,14 @@ let store = {
     this._callSubscriber = observer;
   },
 
-
-  addPost() {
-
-    let newPost = {
-      id: 3,
-      message: this._state.profilePage.newPostText,
-      likes: 0
-    };
-
-    this._state.profilePage.dataPosts.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this._callSubscriber(this._state);
-  },
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-  addMessage() {
-
-    let newMessage = {
-      id: 4,
-      src: 'https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-      message: this._state.dialogsPage.newPostText,
-      name: 'Me'
-    };
-
-    this._state.dialogsPage.dataMessages.push(newMessage);
-    this._state.dialogsPage.newPostText = '';
-    this._callSubscriber(this._state);
-  },
-  updateNewMessage(newText) {
-    this._state.dialogsPage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-
   dispatch(action) {
 
-    if (action.type === 'ADD-POST') {
-      let newPost = {
-        id: 3,
-        message: this._state.profilePage.newPostText,
-        likes: 0
-      };
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._state.navbar = navbarReducer(this._state.navbar, action);
 
-      this._state.profilePage.dataPosts.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this._state);
-
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-
-    } else if (action.type === 'ADD-MESSAGE') {
-
-      let newMessage = {
-        id: 4,
-        src: 'https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        message: this._state.dialogsPage.newPostText,
-        name: 'Me'
-      };
-      this._state.dialogsPage.dataMessages.push(newMessage);
-      this._state.dialogsPage.newPostText = '';
-      this._callSubscriber(this._state);
-
-    } else if (action.type === 'UPDATE-NEW-MESSAGE') {
-
-      this._state.dialogsPage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-
-    }
-  },
+    this._callSubscriber(this._state);
+  }
 };
 
 window.state = store;
