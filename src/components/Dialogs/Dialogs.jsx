@@ -1,29 +1,29 @@
-import React, {useState} from "react";
+import React from "react";
 import style from "./Dialogs.module.scss"
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {addMessageCreator, updateNewMessageCreator} from "../../redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {
-  let dialogItems = props.data.dataDialogs
+
+  let dialogItems = props.dialogsPage.dataDialogs
     .map( (item, index) => <DialogItem key={index} name={item.name} id={item.id}/> );
 
-  let messageItems = props.data.dataMessages
+  let messageItems = props.dialogsPage.dataMessages
     .map( (item, index) => {
         return <MessageItem key={index} name={item.name} id={item.id} src={item.src} message={item.message}/>
       }
     );
 
-  let newMessageBody = props.data.newMessageText;
+  let newMessageBody = props.dialogsPage.newMessageText;
 
-  const addMessage = () => {
-    props.dispatch(addMessageCreator());
+  const onAddMessage = () => {
+    props.addMessage();
   };
 
   const onMessageChange = (e) => {
     let body = e.target.value;
-    props.dispatch(updateNewMessageCreator(body));
+    props.updateNewMessageText(body);
   };
 
   return (
@@ -37,7 +37,7 @@ const Dialogs = (props) => {
           {messageItems}
           <form className={style.dialogs__form}>
             <textarea onChange={onMessageChange} value={newMessageBody} className={style.dialogs__textarea} placeholder='Write your message'></textarea>
-            <button type='button' onClick={ addMessage } className={ `${style.btn} ${style.dialogs__btn}` }>Send</button>
+            <button type='button' onClick={ onAddMessage } className={ `${style.btn} ${style.dialogs__btn}` }>Send</button>
           </form>
         </div>
       </div>

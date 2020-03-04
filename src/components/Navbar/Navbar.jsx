@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import style from "./Navbar.module.scss";
 import {NavLink} from "react-router-dom";
 import Friends from "./Friends/Friends";
@@ -24,7 +24,7 @@ const Navbar = (props) => {
           <NavLink to="/settings" activeClassName={style.active}>Settings</NavLink>
         </li>
       </ul>
-      <Friends friends={props.data.friends}/>
+      <Friends friends={props.friends}/>
     </nav>
   );
 };
