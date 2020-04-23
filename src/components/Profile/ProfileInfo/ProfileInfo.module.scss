@@ -1,5 +1,9 @@
 @import "../../../global.scss";
 
+.profileInfo {
+  position: relative;
+}
+
 .bg {
   height: 240px;
   margin-bottom: 15px;
@@ -37,13 +41,59 @@
       padding-bottom: 20px;
     }
 
-    ul > li {
-      font-size: 18px;
-      color: #686882;
+    ul {
+      display: flex;
 
-      &:not(:last-child) {
-        padding-bottom: 10px;
+      li {
+        padding-bottom: 15px;
+        &:not(:last-child) {
+          padding-right: 15px;
+        }
       }
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  &__holder {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -7.5px;
+  }
+
+  &__inner {
+    width: 50%;
+    padding: 0 7.5px;
+  }
+
+  &__status {
+    color: #686882;
+    display: block;
+    padding-bottom: 15px;
+  }
+  
+  &__looking {
+    display: flex;
+    flex-wrap: wrap;
+
+    &_img {
+      height: 73px;
+
+      img {
+        height: 100%;
+        display: block;
+      }
+    }
+
+    &_txt {
+      font-size: 14px;
+      display: block;
+      width: calc(100% - 110px);
+      font-style: italic;
+      padding-left: 15px;
     }
   }
 }

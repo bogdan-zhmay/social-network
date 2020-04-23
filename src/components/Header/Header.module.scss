@@ -5,6 +5,12 @@
   background-color: #f1f1f1;
   margin-bottom: 15px;
   padding: 10px 0;
+
+  &__holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   
   &__logo {
     height: 50px;

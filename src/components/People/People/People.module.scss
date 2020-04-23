@@ -1,5 +1,51 @@
 @import "../../../global.scss";
 
+.wrapper {
+  position: relative;
+}
+
+.preloader {
+  width: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.pagination {
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+  width: max-content;
+  border: 1px solid #c8c8c8;
+  margin-bottom: 15px;
+  margin-left: auto;
+
+  li {
+    cursor: pointer;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    transition: all .3s ease-in-out;
+
+    &:not(:last-child) {
+      border-right: 1px solid #c8c8c8;
+    }
+    
+    &:hover {
+      background-color: #f1f1f1;
+    }
+
+    &.selected {
+      color: $color-green;
+    }
+  }
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -36,6 +82,7 @@
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto 15px;
+    background-color: #ccc;
 
     img {
       display: block;
@@ -75,5 +122,13 @@
   &__btn {
     margin: 0 auto;
     padding: 10px 30px;
+
+    &_unfollow {
+      background-color: #e85a3a;
+
+      &:before {
+        background-color: rgba(0,0,0, .15);
+      }
+    }
   }
 }
