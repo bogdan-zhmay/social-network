@@ -5,6 +5,7 @@ import {
   setCurrentPage,
   setPeople,
   setTotalPeopleCount,
+  toggleFollowingProgress,
   toggleIsFetching,
   unfollow
 } from "../../redux/people-reducer";
@@ -17,6 +18,7 @@ import {peopleAPI} from "../../api/api";
 class PeopleContainer extends React.Component {
 
   componentDidMount() {
+
     this.props.toggleIsFetching(true);
 
     peopleAPI.getPeople(this.props.currentPage, this.props.pageSize).then(data => {
@@ -49,6 +51,8 @@ class PeopleContainer extends React.Component {
           people={this.props.people}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
+          toggleFollowingProgress={this.props.toggleFollowingProgress}
+          followingInProgress={this.props.followingInProgress}
         />
       </div>
     )
@@ -61,7 +65,8 @@ const mapStateToProps = (state) => {
     pageSize: state.peoplePage.pageSize,
     totalPeopleCount: state.peoplePage.totalPeopleCount,
     currentPage: state.peoplePage.currentPage,
-    isFetching: state.peoplePage.isFetching
+    isFetching: state.peoplePage.isFetching,
+    followingInProgress: state.peoplePage.followingInProgress
   }
 };
 
@@ -72,4 +77,5 @@ export default connect(mapStateToProps, {
   setCurrentPage,
   setTotalPeopleCount,
   toggleIsFetching,
+  toggleFollowingProgress
 })(PeopleContainer);

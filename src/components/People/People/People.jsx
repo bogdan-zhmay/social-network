@@ -3,6 +3,7 @@ import style from "./People.module.scss";
 import userIcon from "../../../assets/images/user-icon.png"
 import {NavLink} from "react-router-dom";
 import {followAPI} from "../../../api/api";
+import {toggleFollowingProgress} from "../../../redux/people-reducer";
 
 
 const People = (props) => {
@@ -47,23 +48,27 @@ const People = (props) => {
                   <span className={style.item__city}>{"people.location.city"}</span>
                   <div>
                     {people.followed
-                      ? <button onClick={() => {
+                      ? <button disabled={props.followingInProgress.some(id => id === people.id)} onClick={() => {
+                        props.toggleFollowingProgress(true, people.id);
 
                         followAPI.unfollowPeople(people.id)
                           .then(data => {
                             if (data.resultCode === 0) {
                               props.unfollow(people.id)
                             }
+                            props.toggleFollowingProgress(false, people.id);
                           });
 
                       }} className={`${style.btn} ${style.item__btn} ${style.item__btn_unfollow}`}>Unfollow</button>
-                      : <button onClick={() => {
+                      : <button disabled={props.followingInProgress.some(id => id === people.id)} onClick={() => {
+                        props.toggleFollowingProgress(true, people.id);
 
                         followAPI.followPeople(people.id)
                           .then(data => {
                             if (data.resultCode === 0) {
                               props.follow(people.id)
                             }
+                            props.toggleFollowingProgress(false, people.id);
                           });
 
                       }} className={`${style.btn} ${style.item__btn}`}>Follow</button>}

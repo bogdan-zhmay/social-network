@@ -131,6 +131,14 @@ textarea {
       width: 100%;
     }
   }
+  
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+    &:before {
+      display: none;
+    }
+  }
 }
 
 .preloader {
